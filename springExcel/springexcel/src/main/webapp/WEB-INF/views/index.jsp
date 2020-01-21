@@ -3,8 +3,19 @@
 <%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
     
 <t:genericpage>
-	<jsp:attribute name="header">
+	<jsp:attribute name="pageTitle">
+		Inicio
+	</jsp:attribute>
+	<jsp:attribute name="pageHeader">
 		<h1>Title</h1>
+	</jsp:attribute>
+	<jsp:attribute name="pageFooter">
+		<h1>Footer</h1>
+	</jsp:attribute>
+	<jsp:attribute name="javascript">
+		<script>
+			console.log("Testing this shit");
+		</script>
 	</jsp:attribute>
 	<jsp:body>
 		<h1>Spring Boot - Web application</h1>		

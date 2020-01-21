@@ -4,9 +4,17 @@
 
 <t:genericpage>
 	<jsp:attribute name="pageHeader">
-		<h1>Title</h1>
+		<h1>Header</h1>
+	</jsp:attribute>
+	<jsp:attribute name="pageFooter">
+		<h1>Footer</h1>
+	</jsp:attribute>
+	<jsp:attribute name="javascriptF">
+		<script>
+			console.log("Testing this shit");
+		</script>
 	</jsp:attribute>
 	<jsp:body>
-		<p>Yes yes yes</title>
+		<p>footer</title>
 	</jsp:body>
 </t:genericpage>

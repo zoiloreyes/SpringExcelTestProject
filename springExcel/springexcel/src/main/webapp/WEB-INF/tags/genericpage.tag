@@ -1,6 +1,8 @@
 <%@tag description="Plantilla de pagina" pageEncoding="UTF-8"%>
-<%@attribute name="header" fragment="true" %>
-<%@attribute name="footer" fragment="true" %>
+<%@attribute name="pageFooter" fragment="true" %>
+<%@attribute name="pageHeader" fragment="true" %>
+<%@attribute name="pageTitle" fragment="true" %>
+<%@attribute name="javascript" fragment="true" %>
 
 <html>
 	<head>
@@ -16,21 +18,19 @@
 			  crossorigin="anonymous"></script>
 		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js" integrity="sha384-6khuMg9gaYr5AxOqhkVIODVIvm9ynTT5J4V1cfthmT+emCG6yVmEZsRHdxlotUnm" crossorigin="anonymous"></script>
 		<script type="text/javascript" src="/js/app.js" defer></script>
-		<title>Excel Práctica</title>
-		<script type="text/javascript" defer>
-			<jsp:invoke fragment="javascript"/>
-		</script>
+		<title><jsp:invoke fragment="pageTitle"/></title>
+		
+		<jsp:invoke fragment="javascript"/>
 	</head>
 	<body>
 		<div id="pageheader">
-			
 			<jsp:invoke fragment="pageHeader" />
 		</div>
 		<div id="body">
 			<jsp:doBody/>
 		</div>
 		<div id="pageFooter">
-			<jsp:invoke fragment="footer"/>
+			<jsp:invoke fragment="pageFooter"/>
 		</div>
 	</body>
 </html>
