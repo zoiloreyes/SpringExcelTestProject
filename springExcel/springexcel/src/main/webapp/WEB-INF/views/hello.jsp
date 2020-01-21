@@ -3,7 +3,7 @@
 <%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
 
 <t:genericpage>
-	<jsp:attribute name="header">
+	<jsp:attribute name="pageHeader">
 		<h1>Title</h1>
 	</jsp:attribute>
 	<jsp:body>
