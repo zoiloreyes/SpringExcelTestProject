@@ -38,7 +38,7 @@ public class ProductoController {
 		});
 		model.addAttribute("productos", productos);
 		
-		return "/views/Producto/Productos";
+		return "views/Producto/Productos";
 	}
 	
 	@GetMapping("/{id}")
@@ -52,7 +52,7 @@ public class ProductoController {
 		
 		model.addAttribute("producto", c);
 		
-		return "/views/Producto/Detalle";
+		return "views/Producto/Detalle";
 	}
 	
 	@GetMapping("/Eliminar/{id}")
@@ -79,7 +79,7 @@ public class ProductoController {
 		model.addAttribute("producto",c);
 		model.addAttribute("categorias", _catServ.GetPaged(0,0));
 		
-		return "/views/Producto/Editar";
+		return "views/Producto/Editar";
 	}
 	
 	@PostMapping("/Editar/{id}")
@@ -97,7 +97,7 @@ public class ProductoController {
 	@GetMapping("/Nueva")
 	public String nuevaProducto(Model model) {
 		model.addAttribute("categorias", _catServ.GetPaged(0,0));
-		return "/views/Producto/Nueva"; 
+		return "views/Producto/Nueva"; 
 	}
 	
 	@PostMapping("/Nueva")

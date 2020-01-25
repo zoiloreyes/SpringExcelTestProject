@@ -33,7 +33,7 @@ public class CompraController {
 		List<Compra> compras= this._service.GetPaged(0, 0);
 		model.addAttribute("compras", compras);
 		
-		return "/views/Compra/Compras";
+		return "views/Compra/Compras";
 	}
 	
 	@GetMapping("/{id}")
@@ -45,7 +45,7 @@ public class CompraController {
 		
 		model.addAttribute("compra", c);
 		
-		return "/views/Compra/Detalle";
+		return "views/Compra/Detalle";
 	}
 	
 	@GetMapping("/Eliminar/{id}")
@@ -89,7 +89,7 @@ public class CompraController {
 	@GetMapping("/Nueva")
 	public String nuevaCompra(Model model) {
 		model.addAttribute("name");
-		return "/views/Compra/Nueva"; 
+		return "views/Compra/Nueva"; 
 	}
 	
 	@PostMapping("/Nueva")

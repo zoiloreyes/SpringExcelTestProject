@@ -30,7 +30,7 @@ public class SuplidorController {
 		List<Suplidor> suplidores= this._service.GetPaged(0, 0);
 		model.addAttribute("suplidores", suplidores);
 		
-		return "/views/Suplidor/Suplidores";
+		return "views/Suplidor/Suplidores";
 	}
 	
 	@GetMapping("/{id}")
@@ -42,7 +42,7 @@ public class SuplidorController {
 		
 		model.addAttribute("suplidor", c);
 		
-		return "/views/Suplidor/Detalle";
+		return "views/Suplidor/Detalle";
 	}
 	
 	@GetMapping("/Eliminar/{id}")
@@ -68,7 +68,7 @@ public class SuplidorController {
 		
 		model.addAttribute("suplidor",c);
 		
-		return "/views/Suplidor/Editar";
+		return "views/Suplidor/Editar";
 	}
 	
 	@PostMapping("/Editar/{id}")
@@ -86,7 +86,7 @@ public class SuplidorController {
 	@GetMapping("/Nueva")
 	public String nuevaSuplidor(Model model) {
 		model.addAttribute("name");
-		return "/views/Suplidor/Nueva"; 
+		return "views/Suplidor/Nueva"; 
 	}
 	
 	@PostMapping("/Nueva")

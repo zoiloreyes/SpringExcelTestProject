@@ -31,7 +31,7 @@ public class ClienteController {
 	public String clientes(Model model) {
 		List<Cliente> clientes = this.cliService.GetPaged(0, 0);
 		model.addAttribute("clientes", clientes);
-		return "/views/cliente/Clientes";
+		return "views/cliente/Clientes";
 	}
 	
 	@GetMapping("/{id}")
@@ -43,7 +43,7 @@ public class ClienteController {
 		
 		model.addAttribute("cliente", c);
 		
-		return "/views/Cliente/Detalle";
+		return "views/Cliente/Detalle";
 	}
 	
 	@GetMapping("/Eliminar/{id}")
@@ -69,7 +69,7 @@ public class ClienteController {
 		
 		model.addAttribute("cliente",c);
 		
-		return "/views/Cliente/Editar";
+		return "views/Cliente/Editar";
 	}
 	
 	@PostMapping("/Editar/{id}")
@@ -87,7 +87,7 @@ public class ClienteController {
 	@GetMapping("/Nueva")
 	public String nuevaCliente(Model model) {
 		model.addAttribute("name");
-		return "/views/Cliente/Nueva"; 
+		return "views/Cliente/Nueva"; 
 	}
 	
 	@PostMapping("/Nueva")
