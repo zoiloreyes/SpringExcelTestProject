@@ -1,0 +1,70 @@
+<!DOCTYPE HTML>
+<html xmlns:layout="http://www.w3.org/1999/xhtml"
+	layout:decorate="~{fragments/main_layout}">
+<head>
+<title>Suplidores</title>
+</head>
+<body>
+	<div layout:fragment="content" class="container-fluid"  >
+		<div class="row my-2" >
+			<div class="col-md-8 offset-md-2 ">
+				<div class="d-flex justify-content-end my-2">
+					<a th:href="@{/Suplidor/Nueva}" class="btn btn-success">Nuevo
+						Suplidor</a>
+				</div>
+			</div>
+			<div class="col-md-8 offset-md-2 border bg-white overflow-auto">
+				<table class="table table-striped">
+					<thead class="thead-dark">
+						<tr>
+							<th>Id</th>
+							<th>Nombre</th>
+							<th>Apellido</th>
+							<th>Correo</th>
+							<th>Telefono</th>
+							<th>Comentario</th>
+							<th>Acciones</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:if="${suplidores.empty}">
+							<td colspan="99" class="text-center">No hay suplidores
+								disponibles
+							</td>
+						</tr>
+						<tr th:each="suplidor : ${suplidores}">
+							<td><span th:text="${suplidor.id}"></span></td>
+							<td><span th:text="${suplidor.nombre}"></span></td>
+							<td><span th:text="${suplidor.apellido}"></span></td>
+							<td><span th:text="${suplidor.correo}"></span></td>
+							<td><span th:text="${suplidor.telefono}"></span></td>
+							<td><span th:text="${suplidor.comentario}"></span></td>
+							<td>
+								<a th:href="@{|/Suplidor/${suplidor.id}|}"  title="Ver Detalles" class="btn btn-info m-1"><i class="fa fa-eye"></i></a>
+								<a th:href="@{|/Suplidor/Editar/${suplidor.id}|}" title="Editar" class="btn btn-info m-1"><i class="fa fa-pencil"></i></a>
+								<a th:href="@{|/Suplidor/Eliminar/${suplidor.id}|}" title="Eliminar" class="btn btn-danger m-1"><i class="fa fa-trash"></i></a>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+	
+	<script layout:fragment="jsScript" type="text/javascript">
+		new Vue({
+			el : '#app',
+			data : {
+				showModal : false
+			},
+			methods: {
+				test: (val) => {
+					console.log("Nice");
+					console.log(val);
+				}
+			}
+		})
+    </script>
+	
+</body>
+</html>

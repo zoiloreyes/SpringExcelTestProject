@@ -1,0 +1,62 @@
+<!DOCTYPE HTML>
+<html xmlns:layout="http://www.w3.org/1999/xhtml"
+	layout:decorate="~{fragments/main_layout}">
+<head>
+<title>Categorias</title>
+</head>
+<body>
+	<div layout:fragment="content" class="container-fluid"  >
+		<div class="row my-2" >
+			<div class="col-md-8 offset-md-2 ">
+				<div class="d-flex justify-content-end my-2">
+					<a th:href="@{/Categoria/Nueva}" class="btn btn-success">Nueva
+						Categoria</a>
+				</div>
+			</div>
+			<div class="col-md-8 offset-md-2 border bg-white">
+				<table class="table table-striped">
+					<thead class="thead-dark">
+						<tr>
+							<th>Id</th>
+							<th>Nombre</th>
+							<th>Acciones</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:if="${categorias.empty}">
+							<td colspan="99" class="text-center">No hay categorias
+								disponibles
+							</td>
+						</tr>
+						<tr th:each="categoria : ${categorias}">
+							<td><span th:text="${categoria.id}"></span></td>
+							<td><span th:text="${categoria.nombre}"></span></td>
+							<td>
+								<a th:href="@{|/Categoria/${categoria.id}|}"  title="Ver Detalles" class="btn btn-info"><i class="fa fa-eye"></i></a>
+								<a th:href="@{|/Categoria/Editar/${categoria.id}|}" title="Editar" class="btn btn-info"><i class="fa fa-pencil"></i></a>
+								<a th:href="@{|/Categoria/Eliminar/${categoria.id}|}" title="Eliminar" class="btn btn-danger"><i class="fa fa-trash"></i></a>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+	
+	<script layout:fragment="jsScript" type="text/javascript">
+		new Vue({
+			el : '#app',
+			data : {
+				showModal : false
+			},
+			methods: {
+				test: (val) => {
+					console.log("Nice");
+					console.log(val);
+				}
+			}
+		})
+    </script>
+	
+</body>
+</html>

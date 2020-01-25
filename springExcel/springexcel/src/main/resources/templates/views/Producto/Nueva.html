@@ -1,0 +1,155 @@
+<!DOCTYPE HTML>
+<html xmlns:layout="http://www.w3.org/1999/xhtml"
+	layout:decorate="~{fragments/main_layout}">
+<head>
+<title>Nuevo Producto</title>
+</head>
+<body>
+	<div layout:fragment="content" class="container-fluid">
+		<div class="row my-2">
+			<div class="offset-md-1 col-md-10">
+				<div class="d-flex justify-content-end my-2">
+					<a th:href="@{/Producto/Index}" class="btn btn-info">Regresar</a>
+				</div>
+			</div>
+			<div class="offset-md-1 col-md-10 border bg-white">
+					<form id="app" @submit="checkForm" 
+					modelAttribute="producto"
+					th:action="@{/Producto/Nueva}"
+					method="post">
+					
+					<h3>Producto {{Nombre || "Nuevo"}}</h3>
+					
+					
+					<div class="form-row">
+						<div class="col">
+							<p v-if="errors.length">
+								<b>Corrige los siguientes errores:</b>
+								
+								<div v-for="error in errors"  class="alert alert-danger" role="alert">
+								  {{ error }}
+								</div>
+							</p>	
+						</div>
+					</div>
+					<div class="form-row">
+						<div class="form-group col-md-12">
+							<label for="Nombre">Nombre</label>
+							<input id="Nombre"  v-model="Nombre"			      
+						      type="text"
+						      name="Nombre"
+						      class="form-control"/>
+						</div>
+					</div>
+					<div class="form-row">
+						<div class="form-group col-md-12">
+							<label for="Descripcion">Descripcion</label>
+							<textarea id="Descripcion"  v-model="Descripcion"			      
+						      type="text"
+						      name="Descripcion"
+						      class="form-control"></textarea>
+						</div>
+					</div>
+					<div class="form-row">
+						<div class="form-group col-md-12">
+							<label for="CategoriaID">Categoria</label>
+							<select id="CategoriaID"  v-model="CategoriaID"			      
+						      type="text"
+						      name="CategoriaID"
+						      class="form-control">
+						      	<option th:each="cat : ${categorias}" th:text="${cat.nombre}" th:value=${cat.id}></option>
+						      </select>
+						</div>
+					</div>
+					<div class="form-row">
+						<div class="form-group col-md-6">
+							<label for="InicioInventario">Inventario Inicial</label>
+							<input type="number" 
+								   id="InicioInventario"
+								   class="form-control w-100"
+								   v-model="InicioInventario"
+								   name="InicioInventario"
+							/>
+						</div>
+						<div class="form-group col-md-6">
+							<label for="PuntoDePedido">Punto de Pedido</label>
+							<input type="number" 
+								   id="PuntoDePedido"
+								   class="form-control w-100"
+								   v-model="PuntoDePedido"
+								   name="PuntoDePedido"
+							/>
+						</div>
+					</div>
+					<div class="form-row">
+						<div class="form-group col-md-6">
+							<label for="UnidadMedida">Unidad de medida</label>
+							<input type="text" 
+								   id="UnidadMedida"
+								   class="form-control"
+								   v-model="UnidadMedida"
+								   name="UnidadMedida"
+							/>
+						</div>
+						<div class="form-group col-md-6">
+							<label for="CantidadInventario">Cantidad Inventario</label>
+							<input type="number" 
+								   class="form-control w-100"
+								   id="CantidadInventario"
+								   v-model="CantidadInventario"
+								   name="CantidadInventario"
+							/>
+						</div>
+					</div>
+					<div class="form-row">
+						<div class="form-group col-md-12">
+							<label for="Comentario">Comentario</label>
+							<textarea id=""  v-model="Comentario"			      
+						      type="text"
+						      name="Comentario"
+						      class="form-control"></textarea>
+						</div>
+					</div>
+					<input type="submit" class="btn btn-primary" value="Guardar"/>
+				</form>
+			</div>
+		</div>
+	</div>
+	<script layout:fragment="jsScript" type="text/javascript">
+	const app = new Vue({
+		  el: '#app',
+		  data: {
+		    errors: [],
+		    Nombre: null,
+		    Descripcion: null,
+		    InicioInventario: 0,
+		    PuntoDePedido: 0,
+		    UnidadMedida: "Pieza",
+		    CategoriaID: 0,
+		    Comentario: null,
+		    CantidadInventario: 0
+		  },
+		  methods:{
+		    checkForm: function (e) {
+		     console.log(e);
+		      if (this.Name) {
+		    	  e.submit();
+		    	  return true;
+		      }
+
+		      this.errors = [];
+
+		      if (!this.Nombre) {
+		        this.errors.push('Nombre requerido.');
+		      }
+		      
+		      if(this.errors.length == 0){
+		    	  return true;
+		      }
+		      e.preventDefault();
+		    }
+		  }
+		})
+    </script>
+</body>
+</html>

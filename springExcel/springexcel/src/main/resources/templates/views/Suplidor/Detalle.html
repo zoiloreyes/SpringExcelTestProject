@@ -1,0 +1,72 @@
+<!DOCTYPE HTML>
+<html xmlns:layout="http://www.w3.org/1999/xhtml"
+	layout:decorate="~{fragments/main_layout}">
+<head>
+<title th:text="|Suplidor ${suplidor.nombre}|">
+</title>
+</head>
+<body>
+	<div layout:fragment="content" class="container-fluid">
+		<div class="row my-2">
+			<div class="offset-md-2 col-md-8">
+				<div class="d-flex justify-content-end my-2">
+					<a th:href="@{/Suplidor/Index}" class="btn btn-info">Regresar</a>
+				</div>
+			</div>
+			<div class="col-md-8 offset-md-2 border bg-white">
+				<h1  th:text="|Suplidor - ${suplidor.nombre} ${suplidor.apellido}|"></h1>
+		
+				<div class="row">
+					<div class="col">
+						<h4>ID</h4>
+						<h5 class="text-secondary" th:text="${suplidor.id}"></h5>
+					</div>
+				</div>
+				
+				<div class="row">
+					<div class="col">
+						<h4>Nombre</h4>
+						<h5 class="text-secondary" th:text="${suplidor.nombre}"></h5>
+					</div>
+					<div class="col">
+						<h4>Apellido</h4>
+						<h5 class="text-secondary" th:text="${suplidor.nombre}"></h5>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col">
+						<h4>Correo</h4>
+						<h5 class="text-secondary" th:text="${suplidor.correo}"></h5>
+					</div>
+					<div class="col">
+						<h4>Telefono</h4>
+						<h5 class="text-secondary" th:text="${suplidor.telefono}"></h5>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col">
+						<h4>Comentario</h4>
+						<h5 class="text-secondary" th:text="${suplidor.comentario}"></h5>
+					</div>
+				</div>
+				
+				
+			</div>
+		</div>
+	</div>
+	<script layout:fragment="jsScript" type="text/javascript">
+	const app = new Vue({
+		  el: '#app',
+		  data: {
+		    errors: [],
+		    Nombre: null
+		  },
+		  methods:{
+		    test: () => {
+		    	console.log("He");
+		    }
+		  }
+		})
+    </script>
+</body>
+</html>

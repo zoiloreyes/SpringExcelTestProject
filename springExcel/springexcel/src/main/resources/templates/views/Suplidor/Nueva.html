@@ -1,0 +1,116 @@
+<!DOCTYPE HTML>
+<html xmlns:layout="http://www.w3.org/1999/xhtml"
+	layout:decorate="~{fragments/main_layout}">
+<head>
+<title>Nuevo Suplidor</title>
+</head>
+<body>
+	<div layout:fragment="content" class="container-fluid">
+		<div class="row my-2">
+			<div class="offset-md-1 col-md-10">
+				<div class="d-flex justify-content-end my-2">
+					<a th:href="@{/Suplidor/Index}" class="btn btn-info">Regresar</a>
+				</div>
+			</div>
+			<div class="offset-md-1 col-md-10 border bg-white">
+					<form id="app" @submit="checkForm" 
+					modelAttribute="cliente"
+					th:action="@{/Suplidor/Nueva}"
+					method="post">
+					
+					<h3>Cliente {{ (Nombre && Apellido && Nombre + " " + Apellido ) || "Nuevo"}}</h3>
+					
+					
+					<div class="form-row">
+						<div class="col">
+							<p v-if="errors.length">
+								<b>Corrige los siguientes errores:</b>
+								
+								<div v-for="error in errors"  class="alert alert-danger" role="alert">
+								  {{ error }}
+								</div>
+							</p>	
+						</div>
+					</div>
+					
+					<div class="form-row">
+						<div class="form-group col-md-6">
+							<label for="Nombre">Nombre</label>
+							<input id="Nombre"  v-model="Nombre"			      
+						      type="text"
+						      name="Nombre"
+						      class="form-control"/>
+						</div>
+						<div class="form-group col-md-6">
+							<label for="Apellido">Apellido</label>
+							<input id="Apellido"  v-model="Apellido"			      
+						      type="text"
+						      name="Apellido"
+						      class="form-control"/>
+						</div>
+					</div>
+					<div class="form-row">
+						<div class="form-group col-md-6">
+							<label for="Telefono">Telefono</label>
+							<input id="Telefono"  v-model="Telefono"			      
+						      type="text"
+						      name="Telefono"
+						      class="form-control"/>
+						</div>
+						<div class="form-group col-md-6">
+							<label for="Correo">Correo</label>
+							<input id="Correo"  v-model="Correo"			      
+						      type="text"
+						      name="Correo"
+						      class="form-control"/>
+						</div>
+					</div>
+					<div class="form-row">
+						<div class="form-group col-md-12">
+							<label for="Comentario">Comentario</label>
+						    <textarea class="form-control" v-model="Comentario" 
+						    	id="Comentario" rows="4"
+						  		name="Comentario"  
+						    ></textarea>
+						</div>
+					</div>
+					<input type="submit" class="btn btn-primary" value="Guardar"/>
+				</form>
+			</div>
+		</div>
+	</div>
+	<script layout:fragment="jsScript" type="text/javascript">
+	const app = new Vue({
+		  el: '#app',
+		  data: {
+		    errors: [],
+		    Nombre: null,
+		    Apellido: null,
+		    Correo: null,
+		    Telefono: null,
+		    Comentario: null
+		  },
+		  methods:{
+		    checkForm: function (e) {
+		     console.log(e);
+		      if (this.Name) {
+		    	  e.submit();
+		    	  return true;
+		      }
+
+		      this.errors = [];
+
+		      if (!this.Nombre) {
+		        this.errors.push('Nombre requerido.');
+		      }
+		      
+		      if(this.errors.length == 0){
+		    	  return true;
+		      }
+		      e.preventDefault();
+		    }
+		  }
+		})
+    </script>
+</body>
+</html>
